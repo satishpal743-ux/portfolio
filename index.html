@@ -120,27 +120,25 @@ problems using programming and data.
 <p><i class="fa-solid fa-envelope"></i> 25aimb51@kristujayanti.com</p>
 
 
-<form>
+<!-- Contact Form -->
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name *" required>
+    <input type="email" id="email" placeholder="Your Email *" required>
+    <textarea id="message" placeholder="Your Message *" required></textarea>
+    <button type="submit" id="submitBtn">
+      <span>Send Message</span>
+      <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+    </button>
+  </form>
 
-<input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Your Email">
-
-<textarea placeholder="Your Message"></textarea>
-
-<button type="submit">Send Message</button>
-
-</form>
-
+  <p id="status"></p>
 </section>
 
-
-
+<!-- Footer -->
 <footer>
-
-<p>© 2026 Satish Pal S</p>
-
+  <p>© 2026 Satish Pal S | Built with passion for AI & ML</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
