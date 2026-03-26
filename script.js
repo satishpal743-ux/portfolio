@@ -52,6 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function createParticles(count = 90) {
+    const container = document.getElementById('particle-bg');
+    if (!container) return;
+    container.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const size = 3 + Math.random() * 10;
+      p.style.left = `${x}vw`;
+      p.style.top = `${y}vh`;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.animationDuration = `${4 + Math.random() * 8}s`;
+      p.style.opacity = `${0.2 + Math.random() * 0.8}`;
+      container.appendChild(p);
+    }
+  }
+
+  createParticles();
+  setInterval(() => createParticles(), 9000);
+
   fetchProfile();
   fetchAchievements();
 

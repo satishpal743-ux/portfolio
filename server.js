@@ -94,12 +94,55 @@ const Contact = mongoose.model("Contact", contactSchema);
 const Achievement = mongoose.model("Achievement", achievementSchema);
 const Profile = mongoose.model("Profile", profileSchema);
 
+const profileData = {
+  name: "Satish Pal S",
+  title: "Machine Learning Engineer (Aspiring)",
+  about: "I am pursuing BSc in Artificial Intelligence and Machine Learning. I aspire to become a Machine Learning Engineer and enjoy solving problems using programming and data.",
+  location: "India",
+  email: "25aimb51@kristujayanti.com",
+  phone: "+91 8951562844",
+  github: "https://github.com/satishpal743-ux/Satish-Portfolio",
+  photoUrl: "photoo.jpg.jpg",
+  resumeUrl: "resume.pdf.pdf",
+  skills: ["C Programming", "Python", "Data Structures", "R Language", "HTML & CSS", "AIML Basics", "MongoDB", "Node.js"],
+};
+
 /* ================= ROUTES ================= */
 
 // Home route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
+
+// Profile route
+app.get("/profile", (req, res) => {
+  res.json({ success: true, profile: profileData });
+});
+
+// Achievements route
+app.get("/achievements", async (req, res) => {
+  try {
+    let achievements = await Achievement.find().sort({ createdAt: -1 });
+
+    // Create defaults if none exist
+    if (!achievements.length) {
+      const defaults = [
+        { title: "AI/ML Project Completion", date: "2025", description: "Successfully completed multiple projects in Artificial Intelligence and Machine Learning." },
+        { title: "Top Academic Performance", date: "2025", description: "Achieved top performance in academic coursework and practical implementations." },
+        { title: "Certified Courses", date: "2024", description: "Completed certified courses in AI, ML, and Web Development from recognized platforms." },
+        { title: "Tech Events & Hackathons", date: "2024", description: "Participated in technical events, workshops, and hackathons to enhance skills." },
+        { title: "Continuous Learning", date: "Ongoing", description: "Continuously learning and improving through hands-on projects and real-world applications." },
+      ];
+      achievements = await Achievement.insertMany(defaults);
+    }
+
+    res.json({ success: true, achievements });
+  } catch (err) {
+    console.error("❌ Error fetching achievements:", err.message);
+    res.status(500).json({ success: false, message: "Failed to fetch achievements" });
+  }
+});
+
 
 // Health check
 app.get("/health", (req, res) => {
