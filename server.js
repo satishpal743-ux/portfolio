@@ -40,7 +40,16 @@ const defaultProfile = {
   email: "25aimb51@kristujayanti.com",
   phone: "+91 8951562844",
   github: "https://github.com/satishpal743-ux/Satish-Portfolio",
-  skills: ["C Programming", "Python", "Data Structures", "R Language", "HTML & CSS", "AIML Basics", "MongoDB", "Node.js"],
+  skills: [
+    { name: "C Programming", icon: "fa-solid fa-c" },
+    { name: "Python", icon: "fa-brands fa-python" },
+    { name: "Data Structures", icon: "fa-solid fa-database" },
+    { name: "R Language", icon: "fa-brands fa-r-project" },
+    { name: "HTML & CSS", icon: "fa-brands fa-html5" },
+    { name: "AIML Basics", icon: "fa-solid fa-brain" },
+    { name: "MongoDB", icon: "fa-solid fa-database" },
+    { name: "Node.js", icon: "fa-brands fa-node-js" }
+  ],
   resumeUrl: "/resume.pdf.pdf",
   photoUrl: "/photoo.jpg.jpg",
 };

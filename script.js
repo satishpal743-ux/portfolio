@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         data.profile.skills.forEach((skill) => {
           const card = document.createElement('div');
           card.className = 'card';
-          card.innerHTML = `<i class='fa-solid fa-circle-chevron-right'></i> ${skill}`;
+          const iconClass = skill.icon || 'fa-solid fa-circle-chevron-right';
+          card.innerHTML = `<i class='${iconClass}'></i> ${skill.name || skill}`;
           skillsGrid.appendChild(card);
         });
       }
