@@ -169,6 +169,16 @@ section h2 {
   gap: 10px;
 }
 
+.skill-level {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-left: 6px;
+}
+
 .achievements-list {
   list-style: none;
   padding: 0;

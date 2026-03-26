@@ -1,4 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const SAMPLE_ACHIEVEMENTS = [
+    {
+      icon: "🏆",
+      title: "Hackathon Winner — College Tech Fest",
+      description: "1st place at the annual college hackathon for building an AI-based health tracker.",
+      year: "2024",
+    },
+    {
+      icon: "🥇",
+      title: "Academic Excellence Award",
+      description: "Ranked in the top 5% of the batch with a GPA of 9.2/10 in second semester.",
+      year: "2023",
+    },
+    {
+      icon: "🎓",
+      title: "Google Cloud Certified",
+      description: "Completed the Google Cloud Associate certification via the Student Developer Program.",
+      year: "2024",
+    },
+  ];
+
+  const SKILLS = [
+    { name: "HTML & CSS", icon: "🌐", level: 85, label: "Advanced" },
+    { name: "JavaScript", icon: "⚡", level: 75, label: "Intermediate" },
+    { name: "Python", icon: "🐍", level: 80, label: "Advanced" },
+    { name: "React.js", icon: "⚛️", level: 65, label: "Intermediate" },
+    { name: "Node.js", icon: "🟢", level: 60, label: "Intermediate" },
+    { name: "SQL / Database", icon: "🗄️", level: 70, label: "Intermediate" },
+    { name: "Git & GitHub", icon: "🔧", level: 78, label: "Advanced" },
+    { name: "Machine Learning", icon: "🤖", level: 55, label: "Beginner+" },
+  ];
+
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
   const status = document.getElementById('status');
@@ -21,11 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const skillsGrid = document.getElementById('skillsGrid');
         skillsGrid.innerHTML = '';
-        data.profile.skills.forEach((skill) => {
+        const profileSkills = Array.isArray(data.profile.skills) && data.profile.skills.length ? data.profile.skills : SKILLS;
+        profileSkills.forEach((skill) => {
           const card = document.createElement('div');
           card.className = 'card';
           const iconClass = skill.icon || 'fa-solid fa-circle-chevron-right';
-          card.innerHTML = `<i class='${iconClass}'></i> ${skill.name || skill}`;
+          const label = skill.label ? ` <span class="skill-level">${skill.label}</span>` : '';
+          card.innerHTML = `<i class='${iconClass}'></i> ${skill.name || skill}${label}`;
           skillsGrid.appendChild(card);
         });
       }
@@ -41,10 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.success && Array.isArray(data.achievements)) {
         const list = document.getElementById('achievementsList');
         list.innerHTML = '';
-        data.achievements.forEach((item) => {
+        const achievements = data.achievements.length ? data.achievements : SAMPLE_ACHIEVEMENTS;
+        achievements.forEach((item) => {
           const li = document.createElement('li');
           li.className = 'achievement-item';
-          li.innerHTML = `<strong>${item.title}</strong> ${item.date ? `<em>(${item.date})</em>` : ''}<p>${item.description}</p>`;
+          const icon = item.icon ? `${item.icon} ` : '';
+          const year = item.year || item.date || '';
+          li.innerHTML = `<strong>${icon}${item.title}</strong> ${year ? `<em>(${year})</em>` : ''}<p>${item.description}</p>`;
           list.appendChild(li);
         });
       }

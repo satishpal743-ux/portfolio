@@ -25,11 +25,24 @@ mongoose
   .catch((err) => console.log("❌ MongoDB Atlas Connection Error:", err.message));
 
 const defaultAchievements = [
-  { title: "AI/ML Projects Completed", description: "Successfully completed multiple projects in Artificial Intelligence and Machine Learning.", date: "2024-2026" },
-  { title: "Academic Excellence", description: "Achieved top performance in academic coursework and practical implementations.", date: "2025" },
-  { title: "Certified Courses", description: "Completed certified courses in AI, ML, and Web Development from recognized platforms.", date: "2024" },
-  { title: "Events & Hackathons", description: "Participated in technical events, workshops, and hackathons to enhance skills.", date: "2024-2026" },
-  { title: "Continuous Learning", description: "Continuously learning and improving through hands-on projects and real-world applications.", date: "Ongoing" },
+  {
+    icon: "🏆",
+    title: "Hackathon Winner — College Tech Fest",
+    description: "1st place at the annual college hackathon for building an AI-based health tracker.",
+    date: "2024",
+  },
+  {
+    icon: "🥇",
+    title: "Academic Excellence Award",
+    description: "Ranked in the top 5% of the batch with a GPA of 9.2/10 in second semester.",
+    date: "2023",
+  },
+  {
+    icon: "🎓",
+    title: "Google Cloud Certified",
+    description: "Completed the Google Cloud Associate certification via the Student Developer Program.",
+    date: "2024",
+  },
 ];
 
 const defaultProfile = {
@@ -41,14 +54,14 @@ const defaultProfile = {
   phone: "+91 8951562844",
   github: "https://github.com/satishpal743-ux/Satish-Portfolio",
   skills: [
-    { name: "C Programming", icon: "fa-solid fa-c" },
-    { name: "Python", icon: "fa-brands fa-python" },
-    { name: "Data Structures", icon: "fa-solid fa-database" },
-    { name: "R Language", icon: "fa-brands fa-r-project" },
-    { name: "HTML & CSS", icon: "fa-brands fa-html5" },
-    { name: "AIML Basics", icon: "fa-solid fa-brain" },
-    { name: "MongoDB", icon: "fa-solid fa-database" },
-    { name: "Node.js", icon: "fa-brands fa-node-js" }
+    { name: "HTML & CSS", icon: "🌐", level: 85, label: "Advanced" },
+    { name: "JavaScript", icon: "⚡", level: 75, label: "Intermediate" },
+    { name: "Python", icon: "🐍", level: 80, label: "Advanced" },
+    { name: "React.js", icon: "⚛️", level: 65, label: "Intermediate" },
+    { name: "Node.js", icon: "🟢", level: 60, label: "Intermediate" },
+    { name: "SQL / Database", icon: "🗄️", level: 70, label: "Intermediate" },
+    { name: "Git & GitHub", icon: "🔧", level: 78, label: "Advanced" },
+    { name: "Machine Learning", icon: "🤖", level: 55, label: "Beginner+" },
   ],
   resumeUrl: "/resume.pdf.pdf",
   photoUrl: "/photoo.jpg.jpg",
@@ -84,6 +97,7 @@ const contactSchema = new mongoose.Schema(
 
 const achievementSchema = new mongoose.Schema(
   {
+    icon: { type: String },
     title: { type: String, required: true },
     description: { type: String, required: true },
     date: { type: String },
@@ -113,7 +127,16 @@ const profileData = {
   github: "https://github.com/satishpal743-ux/Satish-Portfolio",
   photoUrl: "photoo.jpg.jpg",
   resumeUrl: "resume.pdf.pdf",
-  skills: ["C Programming", "Python", "Data Structures", "R Language", "HTML & CSS", "AIML Basics", "MongoDB", "Node.js"],
+  skills: [
+    { name: "HTML & CSS", icon: "🌐", level: 85, label: "Advanced" },
+    { name: "JavaScript", icon: "⚡", level: 75, label: "Intermediate" },
+    { name: "Python", icon: "🐍", level: 80, label: "Advanced" },
+    { name: "React.js", icon: "⚛️", level: 65, label: "Intermediate" },
+    { name: "Node.js", icon: "🟢", level: 60, label: "Intermediate" },
+    { name: "SQL / Database", icon: "🗄️", level: 70, label: "Intermediate" },
+    { name: "Git & GitHub", icon: "🔧", level: 78, label: "Advanced" },
+    { name: "Machine Learning", icon: "🤖", level: 55, label: "Beginner+" },
+  ],
 };
 
 /* ================= ROUTES ================= */
